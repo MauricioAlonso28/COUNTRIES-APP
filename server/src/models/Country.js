@@ -6,8 +6,7 @@ module.exports = (sequelize) => {
     sequelize.define('Country', {
         id: {
             type: DataTypes.STRING(3),
-            primaryKey: true,
-            allowNull: false
+            primaryKey: true
         },
         name: {
             type: DataTypes.STRING,

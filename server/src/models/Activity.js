@@ -22,8 +22,12 @@ module.exports = (sequelize) => {
             }
         }, 
         duration: {
-            type: DataTypes.INTEGER,
-            allowNull: true
+            type: DataTypes.STRING,
+            allowNull: true,
+            set(value){
+                if(value == 1) return this.setDataValue('duration', `${value} hour`)
+                return this.setDataValue('duration', `${value} hours`)
+            }
         },
         season: {
             type: DataTypes.ENUM('Spring', 'Summer', 'Fall', 'Winter'),
