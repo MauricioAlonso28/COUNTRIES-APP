@@ -9,12 +9,13 @@ module.exports = async (req, res) => {
                 {
                     include: { 
                         model: Activity,
-                        attributes: ["name"],
+                        attributes: ["name", "difficulty", "duration", "season"],
                         through: {
                             attributes: []
                         }
                     },
-                })
+                }
+            )
                 
             if (!countryFound) return res.status(404).send("Country not found!")
             return res.status(200).json(countryFound)
