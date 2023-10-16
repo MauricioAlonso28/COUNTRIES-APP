@@ -24,6 +24,7 @@ module.exports = async(req, res) => {
             duration,
             season
         })
+        console.log(countriesFormatted);
         await newActivity.addCountries(countriesFormatted)
         return res.status(200).send("Activity created successfully!")
     } catch (error) {

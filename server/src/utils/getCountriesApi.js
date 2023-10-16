@@ -10,7 +10,7 @@ const getCountriesApi = async () => {
             {
                 id: country.cca3,
                 name: country.name.common,
-                flag: country.flags.svg,
+                flag: country.flags.png,
                 continent: country.continents ? country.continents[0] : undefined,
                 capital: country.capital ? country.capital[0] : `It doesn't have a Capital`,
                 subregion: country.subregion ? country.subregion : "It doesn't have a Subregion",
