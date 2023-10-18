@@ -1,0 +1,29 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+}
+.label {
+    margin-bottom: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}
+.select {
+    margin-bottom: 40px;
+    padding: 2px 3px;
+    width: 200px;
+    border: 1px #fff solid;
+    border-radius: 13px;
+    background-color: rgba(207, 206, 206, 0.162);
+    color: #fff;
+}
+.select option{
+    background-color: azure;
+    color: black;
+}
+.select optgroup {
+    background-color: rgb(178, 218, 218);
+    color: black;
+}

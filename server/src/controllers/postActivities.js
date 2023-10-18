@@ -9,8 +9,6 @@ module.exports = async(req, res) => {
         if (await Activity.findOne({ 
             where: { 
                 name: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + name.toLowerCase() + '%'),
-                difficulty: difficulty,
-                season: season,
             }
         })) return res.status(404).send("Activity already exists.")
         
@@ -18,13 +16,14 @@ module.exports = async(req, res) => {
             return country.toUpperCase()
         }) : null
 
+        const durationFormatted = duration.length > 1 ? duration.split('') : duration
+
         const newActivity = await Activity.create({
             name,
             difficulty,
-            duration,
+            duration: durationFormatted[0],
             season
         })
-        console.log(countriesFormatted);
         await newActivity.addCountries(countriesFormatted)
         return res.status(200).send("Activity created successfully!")
     } catch (error) {

@@ -5,7 +5,11 @@ function Landing (){
     return <>
         <div className={style.container}>
             <NavLink className={style.btn} to={'/home'}>
-                welcome
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Click!
             </NavLink>
         </div>
     </>

@@ -2,14 +2,15 @@ import style from './detail.module.css'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { getCountryById } from '../../redux/actions/getCountryById'
 import img from '../../resources/img/takeFlag.png'
-import img2 from '../../resources/img/parchment.jpg'
+import img2 from '../../resources/img/parchment.png'
 
 function Detail (){
     const { id } = useParams()
     const { countryDetail } = useSelector((state) => state)
+    const [showFlag, setShowFlag] = useState(false)
     const dispatch = useDispatch()
 
     const StyledDiv = styled.div`
@@ -27,14 +28,17 @@ function Detail (){
 
     useEffect(() => {
         dispatch(getCountryById(id))
+        setTimeout(() => {
+            setShowFlag(true)
+        }, 1000);
     }, [])
 
     return <>
         <StyledDiv>
             <div className={style.container}>
                 <div className={style.containerFlag}>
-                    <img className={style.flagImg} src={countryDetail.flag} alt={countryDetail.name} />
-                    <img className={style.bitmoji} src={img} alt="bitmoji" />
+                    <img className={showFlag ? style.flagImg1 : style.flagImg2} src={countryDetail.flag} alt={countryDetail.name} />
+                    <img className={showFlag ? style.bitmoji1 : style.bitmoji2} src={img} alt="bitmoji" />
                 </div>
                 <div className={style.containerInfo}>
                     <img className={style.parchment} src={img2} alt="parchment" />

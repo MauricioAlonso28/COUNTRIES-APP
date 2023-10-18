@@ -3,6 +3,7 @@ import Aside from '../Aside/Aside'
 import { useEffect} from 'react'
 import { useDispatch} from 'react-redux'
 import { getCountries } from '../../redux/actions/getCountries'
+import { getActivities } from '../../redux/actions/getActivities'
 import Cards from '../Cards/Cards'
 
 function Home () {
@@ -10,6 +11,7 @@ function Home () {
     
     useEffect(()=> {
         dispatch(getCountries())
+        dispatch(getActivities())
     }, [])
 
     return <>

@@ -1,0 +1,224 @@
+.container {
+    background: url('../../resources/img/beach.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form1 {
+    background: #fff;
+    height: 85%;
+    width: 40%;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+    animation: pulse 1.2s;
+}
+@keyframes pulse {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+.form2 {
+    background: #fff;
+    height: 85%;
+    width: 40%;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.containerTitle {
+    background-color: black;
+    height: 10%;
+    border-radius: 15px 15px 0px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.title {
+    color: white;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+.containerRequirements {
+    width: 100%;
+    height: 80%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+}
+.containerRequirements .divContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.containerRequirements div:last-of-type {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row: 2;
+}
+.containerInputLabelName {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 40px;
+}
+.containerInputLabelName label{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.containerInputLabelName input {
+    background: rgb(227, 226, 226);
+    border: none;
+    width: 250px;
+    height: 25px;
+    border-radius: 5px;
+    color: black;
+    padding-left: 5px;
+}
+.divContainerSelector{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    gap: 5px;
+}
+.divContainerSelector label{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+.selector {
+    width: 350px;
+    background: rgb(222, 222, 222);
+    border: none;
+    border-radius: 5px;
+    padding: 5px 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.selector option {
+    padding: 3px 0;
+}
+.selector option:hover {
+    background-color: black;
+    color: #fff;
+}
+.options {
+    background: red;
+}
+
+.addedCountries {
+    padding: 30px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+.checkedOpt {
+    background-color: rgb(0, 0, 0);
+    padding: 4px 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    border-radius: 3px;
+}
+.checkedOpt small {
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
+.checkedOpt button {
+    cursor: pointer;
+    background: #fff;
+    border: none;
+    font-size: 10px;
+    padding: 0 2px;
+    color: black;
+    transition: all .2s ease-in;
+}
+.checkedOpt button:hover {
+    background-color: red;
+    color: #fff;
+}
+/* BUTTON */
+.containerBtn {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+}
+.btn {
+    background-color: blueviolet;
+    border-style: none;
+    padding: 10px 30px;
+    font-size: 20px;
+    color: #fff;
+    width: 300px;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    box-shadow: 1px 1px 2px rgba(167, 29, 241, 0.9);
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+}
+.btn:disabled {
+    background-color: rgb(213, 188, 236);
+    box-shadow: 1px 1px 2px rgba(211, 182, 226, 0.9);
+    color: rgb(239, 236, 236);
+}
+.error {
+    margin: 5px 0;
+    font-size: 13px;
+    color: red;
+    letter-spacing: 0.3px;
+    word-spacing: 7px;
+}
+/* IMAGES RENDERIZED */
+.containerImgs {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50%;
+    width: 85%;
+    bottom: 0;
+}
+.containerImgs img{
+    height: 500px;
+}
+.leftImg1 {
+    transform: translateX(-5%);
+    transition: all 0.6s ease-in-out;
+}
+.leftImg2 {
+    transform: translateX(60%);
+    transition: all 0.6s ease-in-out;
+}
+.rightImg1 {
+    transform: translateX(5%);
+    transition: all 0.6s ease-in-out;
+}
+.rightImg2 {
+    transform: translateX(-60%);
+    transition: all 0.6s ease-in-out;
+}
