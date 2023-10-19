@@ -54,12 +54,14 @@ const reducer = (state = initialState, action) => {
                 return {
                     ...state,
                     countries: state.allCountries,
+                    currentPage: 1,
                     errors: false
                 }
             }
             return {
                 ...state,
                 countries: filterByContinent,
+                currentPage: 1,
                 errors: false
             }
         }
@@ -67,19 +69,21 @@ const reducer = (state = initialState, action) => {
             const activityName = action.payload
             const filterByName = state.allCountries.filter((country) => {
                 if (country.Activities.length > 0) {
-                    country.Activities.some((activity) => activity.name === activityName)
+                    return country.Activities.find((activity) => activity.name === activityName)
                 }
             })
             if (action.payload === "All") {
                 return {
                     ...state,
                     countries: state.allCountries,
+                    currentPage: 1,
                     errors: false
                 }
             }
             return {
                 ...state,
                 countries: filterByName,
+                currentPage: 1,
                 errors: false
             }
         }
@@ -88,11 +92,31 @@ const reducer = (state = initialState, action) => {
                 return {
                     ...state,
                     countries: state.allCountries,
+                    currentPage:1,
                     errors: false
                 }
             }
+            const sortFunction = (a, b) => {
+                if (action.payload === "A-Z" || action.payload === "Z-A") {
+                    if(a.name.toLowerCase() > b.name.toLowerCase()) return "A-Z" === action.payload ? 1 : -1;
+                    if(a.name.toLowerCase() < b.name.toLowerCase()) return "Z-A" === action.payload ? 1 : -1;
+                } else {
+                    if (a.population > b.population) return "Ascending" === action.payload ? 1 : -1;
+                    if (a.population < b.population) return "Descending" === action.payload ? 1 : -1;
+                }
+            }
+            const allCountriesCopy = [...state.allCountries]
+            const countriesCopy = [...state.countries]
+
+            const newAllCountries = allCountriesCopy.sort((a, b) => sortFunction(a, b))
+            const newCountries = countriesCopy.sort((a, b) => sortFunction(a, b))
             return {
-                ...state
+                ...state,
+                allCountries: newAllCountries,
+                countries: newCountries,
+                currentPage: 1,
+                order: action.payload,
+                errors: false
             }
         }
         case SET_CURRENT_PAGE: {

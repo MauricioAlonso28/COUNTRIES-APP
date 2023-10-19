@@ -11,8 +11,10 @@ import meRight from '../../resources/img/me-right.png'
 function Form (){
     const [showForm, setShowForm] = useState(false)
     const [showImgs, setShowImgs] = useState(false)
-    const { countries } = useSelector((state) => state)
+
     const dispatch = useDispatch()
+    const { countries } = useSelector((state) => state)
+
     const [addedCountries, setAddedCountries] = useState([])
     const [errors, setErrors] = useState({})
     const [activity, setActivity] = useState({
@@ -50,16 +52,15 @@ function Form (){
         }
     }
 
-    // function deletedCountry (id){
-    //     const countriesFormatted = addedCountries.filter((country) => country !== id)
+    function deletedCountry (id){
+        const countriesFormatted = addedCountries.filter((country) => country !== id)
 
-    //     setAddedCountries(countriesFormatted)
-    //     setActivity({
-    //         ...activity,
-    //         countries: [...countriesFormatted]
-    //     })
-    //     console.log(activity);
-    // }
+        setAddedCountries(countriesFormatted)
+        setActivity({
+            ...activity,
+            countries: [...countriesFormatted]
+        })
+    }
 
     function handleSubmit (e){
         e.preventDefault()
@@ -175,12 +176,13 @@ function Form (){
                                     return (
                                         <div className={style.checkedOpt}>
                                             <small>{country}</small>
-                                            {/* <button 
+                                            <button
+                                                type='button' 
                                                 className={style.optionBtn} 
                                                 onClick={() => deletedCountry(country)}
                                             >
                                                 x
-                                            </button> */}
+                                            </button>
                                         </div>
                                     )
                                 }) : null

@@ -53,7 +53,7 @@ function Detail (){
                             <h3>Capital: &nbsp;{countryDetail.capital}</h3>
                             <h3>Subregion: &nbsp;{countryDetail.subregion}</h3>
                             <h3>Area: &nbsp;{countryDetail.area}</h3>
-                            <h3>Poblation: &nbsp;{countryDetail.population}</h3>
+                            <h3>Population: &nbsp;{countryDetail.population}</h3>
                         </div>
                         <div className={style.containerActivities}>
                             {

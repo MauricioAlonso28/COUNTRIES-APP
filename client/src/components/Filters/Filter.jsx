@@ -34,7 +34,7 @@ function Filter (){
                 </optgroup>
             </select>
             {/* FilterByContinent*/}
-            <label className={style.label} for="FilterByContinent">Filter by continent:</label>
+            <label className={style.label} for="FilterByContinent">Filter by Continent:</label>
             <select className={style.select} name="FilterByContinent" onChange={handleFilterByContinent}>
                 <option value="All">All</option>
                 <option value="Africa">Africa</option>
