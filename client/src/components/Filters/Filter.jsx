@@ -22,7 +22,7 @@ function Filter (){
         <div className={style.container}>
             {/* Order */}
             <label className={style.label} for="OrderBy">Order by:</label>
-            <select className={style.select} name="OrderBy">
+            <select className={style.select} name="OrderBy" onChange={handleOrder}>
                 <option value="Default">Default</option>
                 <optgroup label='Order By Name'>
                     <option value="A-Z">A-Z</option>
@@ -35,7 +35,7 @@ function Filter (){
             </select>
             {/* FilterByContinent*/}
             <label className={style.label} for="FilterByContinent">Filter by continent:</label>
-            <select className={style.select} name="FilterByContinent">
+            <select className={style.select} name="FilterByContinent" onChange={handleFilterByContinent}>
                 <option value="All">All</option>
                 <option value="Africa">Africa</option>
                 <option value="Europe">Europe</option>
@@ -46,14 +46,14 @@ function Filter (){
                 <option value="Antarctica">Antarctica</option>
             </select>
             {/* FilterByName */}
-            <label className={style.label} for="FilterByName">Filter by name:</label>
-            <select className={style.select} name="FilterByName">
+            <label className={style.label} for="FilterByActivity">Filter by Activity:</label>
+            <select className={style.select} name="FilterByActivity" onChange={handleFilterByActivity}>
                 <option value="All">All</option>
                 {
                     activities.length > 0 
                     ? activities.map((activity)=> {
                         return (
-                            <option key={activity._id} value={activity.name}>{activity.name}</option>
+                            <option key={activity.id} value={activity.name}>{activity.name}</option>
                         )
                     }) : null
                 }

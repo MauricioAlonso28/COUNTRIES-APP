@@ -2,6 +2,7 @@ import { GET_COUNTRIES, GET_COUNTRY_BY_ID, GET_ACTIVITIES, POST_ACTIVITY, FILTER
 
 const initialState = {
     countries: [],
+    allCountries: [],
     activities: [],
     countryDetail: {},
     defaultOrderedRef: [],
@@ -20,6 +21,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 countries: action.payload,
+                allCountries: action.payload,
                 defaultOrderedRef: [],
                 order: "Default",
                 filterByContinent: "ALL",
@@ -45,6 +47,53 @@ const reducer = (state = initialState, action) => {
         }
         case POST_ACTIVITY: {
             return {...state}
+        }
+        case FILTER_BY_CONTINENT: {
+            const filterByContinent = state.allCountries.filter((country) => country.continent === action.payload)
+            if (action.payload === "All") {
+                return {
+                    ...state,
+                    countries: state.allCountries,
+                    errors: false
+                }
+            }
+            return {
+                ...state,
+                countries: filterByContinent,
+                errors: false
+            }
+        }
+        case FILTER_BY_ACTIVITY: {
+            const activityName = action.payload
+            const filterByName = state.allCountries.filter((country) => {
+                if (country.Activities.length > 0) {
+                    country.Activities.some((activity) => activity.name === activityName)
+                }
+            })
+            if (action.payload === "All") {
+                return {
+                    ...state,
+                    countries: state.allCountries,
+                    errors: false
+                }
+            }
+            return {
+                ...state,
+                countries: filterByName,
+                errors: false
+            }
+        }
+        case ORDER: {
+            if (action.payload === "Default") {
+                return {
+                    ...state,
+                    countries: state.allCountries,
+                    errors: false
+                }
+            }
+            return {
+                ...state
+            }
         }
         case SET_CURRENT_PAGE: {
             return {
