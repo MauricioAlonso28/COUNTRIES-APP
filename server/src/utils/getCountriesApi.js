@@ -3,6 +3,11 @@ const { Country } = require('../db')
 
 const getCountriesApi = async () => {
     try {
+        const exisitingCountries = await Country.findAll()
+        if (exisitingCountries.length > 0) {
+            console.log("Countries already exist!");
+            return ":("
+        }
         const response = await axios.get(`http://localhost:5000/countries`)
         const countries = await response.data
 
