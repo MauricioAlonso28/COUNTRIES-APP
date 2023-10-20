@@ -1,7 +1,7 @@
 import { GET_COUNTRIES, ERROR } from "../types";
 import axios from 'axios'
 
-const URL_API = 'http://localhost:3001/countries'
+const URL_API = 'https://countries-app-backend-b4er.onrender.com/countries'
 
 export const getCountries = (name) => {
     return async (dispatch) => {
