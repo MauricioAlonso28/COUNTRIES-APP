@@ -14,6 +14,7 @@ export const getActivities = () => {
             })
 
         } catch (error) {
+            console.log(error);
             return dispatch({
                 type: ERROR,
                 payload: error.message

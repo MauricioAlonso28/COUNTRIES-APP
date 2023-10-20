@@ -50,6 +50,7 @@ const reducer = (state = initialState, action) => {
         }
         case FILTER_BY_CONTINENT: {
             const filterByContinent = state.allCountries.filter((country) => country.continent === action.payload)
+            
             if (action.payload === "All") {
                 return {
                     ...state,
@@ -72,6 +73,7 @@ const reducer = (state = initialState, action) => {
                     return country.Activities.find((activity) => activity.name === activityName)
                 }
             })
+
             if (action.payload === "All") {
                 return {
                     ...state,
@@ -96,6 +98,7 @@ const reducer = (state = initialState, action) => {
                     errors: false
                 }
             }
+
             const sortFunction = (a, b) => {
                 if (action.payload === "A-Z" || action.payload === "Z-A") {
                     if(a.name.toLowerCase() > b.name.toLowerCase()) return "A-Z" === action.payload ? 1 : -1;
@@ -105,6 +108,7 @@ const reducer = (state = initialState, action) => {
                     if (a.population < b.population) return "Descending" === action.payload ? 1 : -1;
                 }
             }
+            
             const allCountriesCopy = [...state.allCountries]
             const countriesCopy = [...state.countries]
 

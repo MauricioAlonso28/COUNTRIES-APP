@@ -1,5 +1,4 @@
 import style from './form.module.css'
-import styled from 'styled-components'
 import { useEffect, useState } from 'react'
 import { validation } from './validation.js'
 import { useDispatch, useSelector } from 'react-redux'

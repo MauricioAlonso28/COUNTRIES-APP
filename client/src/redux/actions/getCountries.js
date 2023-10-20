@@ -21,6 +21,7 @@ export const getCountries = (name) => {
                 payload: data
             }) 
         } catch (error) {
+            console.log(error);
             return dispatch({
                 type: ERROR,
                 payload: error.message

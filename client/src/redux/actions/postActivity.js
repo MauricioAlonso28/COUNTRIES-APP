@@ -11,6 +11,7 @@ export const postActivity = (activity) => {
                 type: POST_ACTIVITY
             })
         } catch (error) {
+            console.log(error);
             return dispatch({
                 type: ERROR,
                 payload: error.message
