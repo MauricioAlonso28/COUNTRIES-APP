@@ -5,7 +5,7 @@ const getCountriesApi = async () => {
     try {
         const exisitingCountries = await Country.findAll()
         if (exisitingCountries.length > 0) {
-            console.log("Countries already exist!");
+            console.log("Countries already exist in the Database!");
             return ":("
         }
         const response = await axios.get(`http://localhost:5000/countries`)

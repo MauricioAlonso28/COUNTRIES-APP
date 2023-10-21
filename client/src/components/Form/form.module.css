@@ -128,11 +128,12 @@
 
 .addedCountries {
     padding: 30px 0;
-    width: 100%;
+    width: 95%;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 40px;
+    flex-wrap: wrap;
 }
 .checkedOpt {
     background-color: rgb(0, 0, 0);
