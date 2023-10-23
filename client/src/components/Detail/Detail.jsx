@@ -55,10 +55,10 @@ function Detail (){
                             <h3>Area: &nbsp;{countryDetail.area}</h3>
                             <h3>Population: &nbsp;{countryDetail.population}</h3>
                         </div>
+                        {
+                            countryDetail.Activities && countryDetail.Activities.length > 0 ? <h3 >Activities</h3> : null
+                        }    
                         <div className={style.containerActivities}>
-                            {
-                                countryDetail.Activities && countryDetail.Activities.length > 0 ? <h3 >Activities</h3> : null
-                            }    
                             {
                                 countryDetail.Activities && countryDetail.Activities.length > 0  && countryDetail.Activities.length < 4?
                                     countryDetail.Activities.map((activity) => {

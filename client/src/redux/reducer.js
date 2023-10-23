@@ -67,13 +67,6 @@ const reducer = (state = initialState, action) => {
             }
         }
         case FILTER_BY_ACTIVITY: {
-            const activityName = action.payload
-            const filterByName = state.allCountries.filter((country) => {
-                if (country.Activities.length > 0) {
-                    return country.Activities.find((activity) => activity.name === activityName)
-                }
-            })
-
             if (action.payload === "All") {
                 return {
                     ...state,
@@ -82,9 +75,17 @@ const reducer = (state = initialState, action) => {
                     errors: false
                 }
             }
+            
+            const activityName = action.payload
+            const countriesFromActivity = state.activities.find((activity) => activity.name === activityName)
+            const countriesAct = countriesFromActivity.Countries
+            const countriesFound = state.allCountries.filter((country) => {
+                return countriesAct.some((countryAct) => countryAct.name === country.name)
+            })
+
             return {
                 ...state,
-                countries: filterByName,
+                countries: countriesFound,
                 currentPage: 1,
                 errors: false
             }

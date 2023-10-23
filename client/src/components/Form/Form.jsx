@@ -59,6 +59,10 @@ function Form (){
             ...activity,
             countries: [...countriesFormatted]
         })
+        setErrors(validation({
+            ...activity,
+            countries: [...countriesFormatted]
+        }))
     }
 
     function handleSubmit (e){

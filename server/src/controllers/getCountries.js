@@ -1,14 +1,14 @@
-const { Country } = require('../db')
+const { Country, Activity } = require('../db')
 const sequelize = require('sequelize')
 
 module.exports = async(req, res) => {
     try {
         const { name } = req.query
         if (name) {
-            const countriesFound = await Country.findAll({
+            const countriesFound = await Country.findAll({  
                 where: {
                     name: sequelize.where(sequelize.fn('LOWER', sequelize.col('name')), 'LIKE', '%' + name.toLowerCase() + '%')
-                }
+                },
             })
             if (countriesFound.length < 1) return res.status(404).send("There aren't countries with that name")
             return res.status(200).json(countriesFound)     

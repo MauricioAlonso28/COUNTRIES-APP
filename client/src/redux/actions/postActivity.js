@@ -7,11 +7,13 @@ export const postActivity = (activity) => {
     return async (dispatch) => {
         try {
             await axios.post(URL_API, activity)
+            alert('Activity created succesfully!')
             return dispatch({
                 type: POST_ACTIVITY
             })
         } catch (error) {
             console.log(error);
+            alert('Activity already exists...')
             return dispatch({
                 type: ERROR,
                 payload: error.message
