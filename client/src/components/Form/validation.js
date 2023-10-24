@@ -39,8 +39,8 @@ export const validation = (activity) => {
     if(!season.test(activity.season)) {
         error.season = "Season Contains invalid characters."
     }
-    if(activity.season.length < 5 && activity.season.length > 0) {
-        error.season = "Season must be at least five character long"
+    if(activity.season.length < 4 && activity.season.length > 0) {
+        error.season = "Season must be at least four character long"
     }
     if(activity.season.length === 0) {
         error.season = "Season field can't be empty"
