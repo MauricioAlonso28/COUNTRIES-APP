@@ -91,15 +91,6 @@ const reducer = (state = initialState, action) => {
             }
         }
         case ORDER: {
-            if (action.payload === "Default") {
-                return {
-                    ...state,
-                    countries: state.allCountries,
-                    currentPage:1,
-                    errors: false
-                }
-            }
-
             const sortFunction = (a, b) => {
                 if (action.payload === "A-Z" || action.payload === "Z-A") {
                     if(a.name.toLowerCase() > b.name.toLowerCase()) return "A-Z" === action.payload ? 1 : -1;
@@ -112,9 +103,18 @@ const reducer = (state = initialState, action) => {
             
             const allCountriesCopy = [...state.allCountries]
             const countriesCopy = [...state.countries]
-
+            
             const newAllCountries = allCountriesCopy.sort((a, b) => sortFunction(a, b))
             const newCountries = countriesCopy.sort((a, b) => sortFunction(a, b))
+            
+            if (action.payload === "Default") {
+                return {
+                    ...state,
+                    countries: countriesCopy,
+                    currentPage:1,
+                    errors: false
+                }
+            }
             return {
                 ...state,
                 allCountries: newAllCountries,
