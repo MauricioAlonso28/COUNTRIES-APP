@@ -9,8 +9,8 @@ export const validation = (activity) => {
     if(name.test(activity.name)) {
         error.name = "Name contains invalid characters."
     }
-    if(activity.name.length > 20) {
-        error.name = "Name must be less than 20 characters."
+    if(activity.name.length > 40) {
+        error.name = "Name must be less than 40 characters."
     }
     if(activity.name.length === 0) {
         error.name = "Name field can't be empty"
