@@ -5,14 +5,14 @@ const initialState = {
     allCountries: [],
     activities: [],
     countryDetail: {},
-    defaultOrderedRef: [],
-    order: "Default",
-    filterByContinent: "ALL",
-    filterByActivity: "All",
-    filteredByContinent: [],
-    filteredByActivity: [],
     currentPage: 1,
     errors: false,
+    // order: "Default",
+    // filterByContinent: "ALL",
+    // filterByActivity: "All",
+    // defaultOrderedRef: [],
+    // filteredByContinent: [],
+    // filteredByActivity: [],
 }
 
 const reducer = (state = initialState, action) => {
@@ -101,23 +101,22 @@ const reducer = (state = initialState, action) => {
                 }
             }
             
-            const allCountriesCopy = [...state.allCountries]
             const countriesCopy = [...state.countries]
-            
-            const newAllCountries = allCountriesCopy.sort((a, b) => sortFunction(a, b))
             const newCountries = countriesCopy.sort((a, b) => sortFunction(a, b))
             
             if (action.payload === "Default") {
+                let allCountriesCopy = [...state.allCountries]
+                allCountriesCopy = allCountriesCopy.filter((country) => state.countries.includes(country)) 
+
                 return {
                     ...state,
-                    countries: countriesCopy,
+                    countries: allCountriesCopy,
                     currentPage:1,
                     errors: false
                 }
             }
             return {
                 ...state,
-                allCountries: newAllCountries,
                 countries: newCountries,
                 currentPage: 1,
                 order: action.payload,
