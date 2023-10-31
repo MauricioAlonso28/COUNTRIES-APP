@@ -15,6 +15,10 @@ function Form (){
     const { countries } = useSelector((state) => state)
 
     const [addedCountries, setAddedCountries] = useState([])
+    const [season, setSeason] = useState("")
+    const [duration, setDuration] = useState([])
+    const [difficulty, setDifficulty] = useState([])
+    const [seasons, setSeasons] = useState(["Spring", "Summer", "Fall", "Winter"])
     const [errors, setErrors] = useState({})
     const [activity, setActivity] = useState({
         name: "",
@@ -23,6 +27,15 @@ function Form (){
         season: "",
         countries: []
     })
+
+    function countDurationDifficulty (){
+        for (let i = 1; i < 25; i++) {
+            duration.push(i)
+        }
+        for (let i = 1; i < 6; i++) {
+            difficulty.push(i)
+        }
+    }
 
     function handleChange (e){
         const {name, value} = e.target;
@@ -39,7 +52,20 @@ function Form (){
                 ...activity,
                 countries: [...addedCountries]
             }))
-        }else {
+        } else if(name === "season"){
+            if(season.length < 1){
+                setSeason(value)
+            }
+            
+            setActivity({
+                ...activity,
+                season: value
+            })
+            setErrors(validation({
+                ...activity,
+                season: value
+            }))
+        } else {
             setActivity({
                 ...activity,
                 [name]: value
@@ -47,6 +73,22 @@ function Form (){
             setErrors(validation({
                 ...activity,
                 [name]: value
+            }))
+        }
+    }
+
+    function deleteSelects (e) {
+        const { name, value } = e.target
+
+        if (name === "season") {
+            setSeason("")  
+            setActivity({
+                ...activity,
+                season: ""
+            })
+            setErrors(validation({
+                ...activity,
+                season: ""
             }))
         }
     }
@@ -80,6 +122,7 @@ function Form (){
     }
     
     useEffect(() => {
+        countDurationDifficulty()
         dispatch(getCountries())
         setTimeout(() => {
             setShowForm(true)
@@ -112,13 +155,15 @@ function Form (){
                         </div>
                         <div className={style.containerInputLabelName}>
                             <label>Difficulty: </label>
-                            <input 
-                                type="text" 
-                                name='difficulty'
-                                value={activity.difficulty}
-                                onChange={handleChange}
-                                placeholder='Example: 1'
-                            />
+                            <select name="difficulty" onChange={handleChange}>
+                                {
+                                    difficulty.length > 0 ? difficulty.map((hour) => {
+                                        return(
+                                            <option value={hour}>{hour}</option>
+                                        )
+                                    }) : null
+                                }
+                            </select>
                             <p className={style.error}>
                                 {errors.difficulty ? errors.difficulty : null}
                             </p>
@@ -127,29 +172,47 @@ function Form (){
                     <div className={`${style.divContainer}`}>
                         <div className={style.containerInputLabelName}>
                             <label>Duration: </label>
-                            <input 
-                                type="text"
-                                name='duration'
-                                value={activity.duration}
-                                onChange={handleChange}
-                                placeholder='Example: 2 hours' 
-                            />
+                            <select name="duration" onChange={handleChange}>
+                                {
+                                    duration.length > 0 ? duration.map((hour) => {
+                                        return(
+                                            <option value={hour}>{hour}</option>
+                                        )
+                                    }) : null
+                                }
+                            </select>
                             <p className={style.error}>
                                 {errors.duration ? errors.duration : null}
                             </p>
                         </div>
                         <div className={style.containerInputLabelName}>
                             <label>Season: </label>
-                            <input 
-                                type="text"
-                                name='season'
-                                value={activity.season}
-                                onChange={handleChange}
-                                placeholder='Example: Spring' 
-                            />
+                            <select name="season" onChange={handleChange}>
+                                {
+                                    seasons.length > 0 ? seasons.map((season) => {
+                                        return (
+                                            <option value={season}>{season}</option>
+                                        )
+                                    }) : null
+                                }
+                            </select>
                             <p className={style.error}>
                                 {errors.season ? errors.season : null}
                             </p>
+                            {
+                                season.length > 0 
+                                ?   <div className={style.btnSeason}>
+                                        <h3>{season}</h3>
+                                        <button 
+                                            name='season' 
+                                            type='button'
+                                            onClick={deleteSelects}
+                                        >
+                                            x
+                                        </button>
+                                </div> 
+                                : null 
+                            }
                         </div>
                     </div>
                     <div className={`${style.divContainerSelector}`}>

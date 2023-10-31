@@ -16,12 +16,11 @@ module.exports = async(req, res) => {
             return country.toUpperCase()
         }) : null
 
-        const durationFormatted = duration.length > 1 ? duration.split('') : duration
 
         const newActivity = await Activity.create({
             name,
             difficulty,
-            duration: durationFormatted[0],
+            duration,
             season
         })
         await newActivity.addCountries(countriesFormatted)

@@ -1,9 +1,6 @@
 export const validation = (activity) => {
     const error = {}
-    const name =  /[`@#$%^*+\=\[\]{};\\|<>\/?~'"]/;
-    const difficulty = /[`@#$%^*+\=\[\]{};\\|<>\/?~a-zA-Z'"]/;
-    const duration = /^[A-Za-z0-9 ]+$/
-    const season = /^[a-zA-Z]+$/
+    const name =  /[`@#$%^*+\=\[\]{};\\|<>\/?~'"\s]/;
 
     /* NAME VALIDATION */
     if(name.test(activity.name)) {
@@ -17,33 +14,18 @@ export const validation = (activity) => {
     }
 
     /* DIFFICULTY VALIDATION */
-    if(difficulty.test(activity.difficulty)) {
-        error.difficulty = "Difficulty contains invalid characters."
-    }
     if(activity.difficulty < 1 || activity.difficulty > 5){
         error.difficulty = 'Difficulty should be between 1 and 5.'
     }
 
     /* DURATION VALIDATION */
-    if(!duration.test(activity.duration)) {
-        error.duration = "Duration contains invalid characters."
-    }
-    if(activity.duration.length > 10) {
-        error.duration = "Exceeds the maximum allowed characters."
-    }
     if(activity.duration.length === 0){
-        error.duration = "Duration field can't be empty."
+        error.duration = "The duration must have at less one hour."
     }
 
     /* SEASON VALIDATION */
-    if(!season.test(activity.season)) {
-        error.season = "Season Contains invalid characters."
-    }
-    if(activity.season.length < 4 && activity.season.length > 0) {
-        error.season = "Season must be at least four character long"
-    }
     if(activity.season.length === 0) {
-        error.season = "Season field can't be empty"
+        error.season = "Choose one season of the year."
     }
 
     /* COUNTRIES VALIDATION */
