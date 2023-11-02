@@ -51,14 +51,14 @@
   npm install
 ```
 
-3.- From the main folder, move to "api" directory and install dependencies.
+3.- From the main folder, move to "server" directory and install dependencies.
 
 ```bash
-  cd api
+  cd server
   npm install
 ```
 
-4.- Create a local database named "videogames". Create a .env file inside the "api" directory and add the following information:
+4.- Create a local database named "countries". Create a .env file inside the "server" directory and add the following information:
 
 ```bash
     DB_USER= // Your postgres username here
@@ -66,8 +66,15 @@
     DB_HOST=localhost
 ```
 
-5.- Run npm start in the terminal, located at the "api" directory. Next, run the same command again this time located in the "client" directory.
+5.- Run npm start in the terminal, located at the "server" directory.
 
 ```bash
     npm start
 ```
+
+6.- Finally run npm run dev in the terminal, located at the "client" directory.
+
+```bash
+    npm run dev
+```
+
