@@ -1,5 +1,6 @@
 # Countries App
 
+This is an application with all the countries in the world, to which you can add activities through a form. This website also includes filtering by activity and by continent, including sorting by name from A to Z and vice versa, as well as sorting in ascending and descending order based on the country's population!
 
 ## Features
 
