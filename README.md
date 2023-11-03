@@ -24,15 +24,15 @@
 
 **Landing**
 
-
+<img src="./img/landingCountry.png" alt="" width="384" height="216" />
 
 **Home**
 
-
+<img src="./img/homeCountry.png" alt="" width="384" height="216" />
 
 **Country Detail**
 
-
+<img src="./img/detailCountry.png" alt="" width="384" height="216" />
 
 
 
